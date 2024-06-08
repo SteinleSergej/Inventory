@@ -1,0 +1,6 @@
+@host= https://localhost:7001/api/product
+
+GET {{host}}
+Accept: application/json
+
+###
