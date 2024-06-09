@@ -1,6 +1,33 @@
-@host= https://localhost:7001/api/product
+@hostname=localhost
+@port=7001
+@host={{hostname}}:{{port}}
 
-GET {{host}}
+GET https://{{host}}/api/product
 Accept: application/json
 
-###
+### Get Product By Id
+GET https://{{host}}/api/product/87ee11b9-136b-41bc-9ae8-374b7b5f83d2
+Accept: application/json
+
+### Create Product
+POST https://{{host}}/api/product
+Content-Type: application/json
+
+{
+  "name": "GTX 9010",
+  "description": "lorem ipsum",
+  "price": 287.90,
+  "quantityInStock": 100,
+  "categoryId": "60ea3bb3-ae87-49ea-a6f5-c2420d6a33d5"
+}
+
+### Update Product
+PUT https://{{host}}/api/product/ba1151d1-c970-40a8-b41c-08dc88795f6b
+Content-Type: application/json
+
+{
+  "price": 300.90
+}
+
+### Delete Product
+DELETE https://{{host}}/api/product/ba1151d1-c970-40a8-b41c-08dc88795f6b
