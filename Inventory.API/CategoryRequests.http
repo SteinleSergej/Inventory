@@ -1,0 +1,37 @@
+@hostname=localhost
+@port=7001
+@host={{hostname}}:{{port}}
+ 
+
+GET https://{{host}}/api/category
+Accept: application/json
+
+### Create Category
+
+POST https://{{host}}/api/category
+Content-Type: application/json
+
+{
+  "categoryName" : "ABC"
+}
+
+
+### Get Category By Id
+
+GET https://{{host}}/api/category/5b5e3648-09a2-4572-883f-2d2e99486de6
+Accept: application/json
+
+### Update Category
+
+PUT https://{{host}}/api/category
+Content-Type: application/json
+
+{
+  "id": "4b835f3b-9706-4486-de58-08dc885b4b19",
+  "name": "ABCDE"
+}
+
+### Delete Category BY Id
+
+DELETE https://{{host}}/api/category/4b835f3b-9706-4486-de58-08dc885b4b19
+Accept: application/json
