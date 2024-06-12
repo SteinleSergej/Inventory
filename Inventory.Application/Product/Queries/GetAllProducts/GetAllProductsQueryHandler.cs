@@ -19,7 +19,7 @@ namespace Inventory.Application.Product.Queries.GetAllProducts
         }
         public async Task<ResponseDto> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            var products = await context.Products.ToListAsync();
+            var products = await context.Products.Include(p => p.Category).ToListAsync();
             return new ResponseDto
             {
                 Data = products,

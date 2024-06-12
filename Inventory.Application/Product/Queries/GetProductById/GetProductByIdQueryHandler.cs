@@ -19,7 +19,7 @@ namespace Inventory.Application.Product.Queries.GetProductById
         }
         public async Task<ResponseDto> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
-            var product = await context.Products.FirstOrDefaultAsync(p => p.Id == request.Id);
+            var product = await context.Products.Include(p => p.Category).FirstOrDefaultAsync(p => p.Id == request.Id);
             if (product == null) {
                 return new ResponseDto
                 {

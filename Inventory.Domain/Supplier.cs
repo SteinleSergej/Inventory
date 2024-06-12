@@ -6,20 +6,12 @@ using System.Threading.Tasks;
 
 namespace Inventory.Domain
 {
-    public class Product
+    public class Supplier
     {
         public Guid Id { get; set; }
-
         public string Name { get; set; } = string.Empty;
 
-        public string Description { get; set; } = string.Empty ;
-
-        public double Price { get; set; }
-
-        public int QuantityInStock { get; set; }
-
-        public Guid CategoryId { get; set; }
-        public Category? Category { get; set; }
+        public string ContactInformation { get; set; } = string.Empty;
 
         public List<ProductSupplier> ProductSuppliers { get; set; } = new();
     }

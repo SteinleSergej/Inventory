@@ -20,6 +20,20 @@ namespace Inventory.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ProductSupplier>()
+                .HasKey(k => new {k.ProductId,k.SupplierId});
+
+            modelBuilder.Entity<ProductSupplier>()
+                .HasOne(s => s.Product)
+                .WithMany(p => p.ProductSuppliers)
+                .HasForeignKey(s => s.ProductId);
+
+            modelBuilder.Entity<ProductSupplier>()
+                .HasOne(s => s.Supplier)
+                .WithMany(x => x.ProductSuppliers)
+                .HasForeignKey( s => s.SupplierId);
+
             var categoryComputers = new Category { Id = Guid.NewGuid(), Name = "Computers" };
             var categoryAccessories = new Category { Id = Guid.NewGuid(), Name = "Accessories" };
             var categoryStorage = new Category { Id = Guid.NewGuid(), Name = "Storage Devices" };
@@ -64,5 +78,7 @@ namespace Inventory.Infrastructure
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<ProductSupplier> ProductSuppliers { get; set; }
     }
 }
