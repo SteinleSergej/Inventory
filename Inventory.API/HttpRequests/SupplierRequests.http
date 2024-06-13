@@ -1,0 +1,36 @@
+@hostname=localhost
+@port=7001
+@host={{hostname}}:{{port}}
+
+GET https://{{host}}/api/supplier
+Accept: application/json
+
+
+### Create Supplier
+POST https://{{host}}/api/supplier
+Content-Type: application/json
+
+{
+  "name": "Test Supplier",
+  "contactInformation": "An der Este 20, 21614 Buxtehude"
+}
+
+### Get Supplier By Id
+GET https://{{host}}/api/supplier/2907205d-903a-4464-3489-08dc8b8a58d9
+Accept: application/json
+
+### Update Supplier
+PUT https://{{host}}/api/supplier
+Content-Type: application/json
+
+{
+  "id": "2907205d-903a-4464-3489-08dc8b8a58d9",
+  "name": "Test Supplier",
+  "contactInformation": "An der Este 21, 21614 Buxtehude"
+
+}
+
+### Delete Supplier BY Id
+
+DELETE https://{{host}}/api/supplier/2907205d-903a-4464-3489-08dc8b8a58d9
+Accept: application/json
